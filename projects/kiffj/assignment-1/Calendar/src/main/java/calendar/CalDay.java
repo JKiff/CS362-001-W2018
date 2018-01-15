@@ -18,7 +18,7 @@ import java.util.*;
  * 
  * 
  */
-public class CalDay {
+public class 	CalDay {
 
 	/** Collection of all of the appointments for the calendar day */
 	LinkedList<Appt> appts;
@@ -72,7 +72,7 @@ public class CalDay {
 	 */
 	public void addAppt(Appt appt) {
 		if (appt.getValid()) {
-			for (int i = 0; i < getAppts().size(); i++) {
+			for (int i = 0; i <= getAppts().size(); i++) {
 				//Put the appointment in the correct order - finish this
 				if (((Appt)getAppts().get(i)).getStartHour() >
 										appt.getStartHour()) {
