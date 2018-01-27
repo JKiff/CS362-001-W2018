@@ -43,7 +43,7 @@ public class TimeTable {
 	        
 	        //Create the first CalDay object with the starting date and add to list
 	        GregorianCalendar nextDay = (GregorianCalendar) firstDay.clone();
-	        while (nextDay.before(lastDay)) {
+	        if (nextDay.before(lastDay)) {
 
 	            calDays.add(new CalDay(nextDay));
 	            nextDay.add(nextDay.DAY_OF_MONTH, 1);
@@ -102,7 +102,7 @@ public class TimeTable {
 	        
 	        //If the first occurrence is after the last day, then it doesn't matter
 	        //when it recurs because those dates must be after the last day too
-	        if (!occurrenceDay.before(lastDay)) {
+	        if (occurrenceDay.before(lastDay)) {
 	            return result;
 	        }
 	        
