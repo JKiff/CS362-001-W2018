@@ -1,0 +1,2 @@
+Bug 1: Line 119 in Appt.java, checking invalid minutes sets isValid to true instead of false
+Bug 2: Line 54 in CalDay.java, 1 is added to the value for day when it really shouldn't be
