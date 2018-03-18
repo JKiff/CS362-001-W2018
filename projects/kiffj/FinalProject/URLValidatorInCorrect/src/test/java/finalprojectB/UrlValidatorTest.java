@@ -31,13 +31,39 @@ public void testManualTest()
 
 
 public void testYourFirstPartition()
-{   
-
+{
+   //This partition will test for a null string value
+   UrlValidator urlVal = new UrlValidator();
+   String nullURL = null;
+   assertFalse(urlVal.isValid(nullURL));
 }
 
-public void testYourSecondPartition(){ 
-
+public void testYourSecondPartition(){
+   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+   String testUrl = "http:/www.google.com/";//invalid scheme
+   assertFalse(urlVal.isValid(testUrl));
 }
+
+public void testYourThirdPartition(){
+   String[] schemes = {"http://", "ftp://", "h3t://"};
+   String testUrl = "http://www.google.com/";//valid schemes
+   String testUrl2 = "h3t://www.google.com/";//valid schemes
+   UrlValidator urlVal = new UrlValidator(schemes);
+   assertTrue(urlVal.isValid(testUrl));//found bug here
+   assertTrue(urlVal.isValid(testUrl2));//found bug here
+}
+
+public void testYourFourthPartition(){
+   String[] schemes = {"http://", "ftp://", "h3t://"};
+   String testUrl = "http:/www.google.com/";//invalid schemes
+   String testUrl2 = "://www.google.com/";//invalid schemes
+   String testUrl3 = "f3t://www.google.com/";//invalid schemes
+   UrlValidator urlVal = new UrlValidator(schemes);
+   assertFalse(urlVal.isValid(testUrl));
+   assertFalse(urlVal.isValid(testUrl2));
+   assertFalse(urlVal.isValid(testUrl3));
+}
+
 //You need to create more test cases for your Partitions if you need to 
 
 public void testIsValid()
